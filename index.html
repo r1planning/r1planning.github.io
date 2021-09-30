@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset = "UTF-8">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+	<script src="https://d3js.org/d3.v4.js"></script>
+	<script src='https://cdn.plot.ly/plotly-2.4.1.min.js'></script>
+	<script src="andes.js"></script>
+	<script src="simple_graph.js"></script>
+	<!--
+	1.0 = layout done
+	2.0 = unemployment graph
+	3.0 = indicators on top of graph
+	4.0 = sidebar options
+	5.0 = right side data viz
+	-->
+	<title>Andes v5.0</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="column sidebar">
+		<!--
+		<div style="padding-left: 20px;padding-top: 20px;"><h2>Sidebar</h2>Look at all these links!</div>
+		<div style="margin-left: 20px;">
+			<a ref="#" class="myButton invert-blue no-border first">Alpha</a><br>
+			<a ref="#" class="myButton invert-blue no-border second">Beta</a><br>
+			<a ref="#" class="myButton invert-blue no-border third">Gamma</a><br>
+			<a ref="#" class="myButton invert-blue no-border fourth">Delta</a><br>
+			<a ref="#" class="myButton invert-blue no-border fifth">Epsilon</a><br>
+			<div class="card sixth">some info could be placed here for people to read.</div>
+		</div>
+		-->
+	</div>
+	<div class="column main_content">
+		<div class="title_section">
+			<div class="column left">
+				<h2>Rockford Economic Indicators Dashboard</h2>
+				How does Rockford, IL compare to its peers and also its past? This dashboard is home to multiple economic indicators that can give us a bird's eye view of our region.
+				<div style="position: absolute; bottom: 0">
+					Other economic indicators<br>
+					<a href="Andes.html" class="myButton invert-blue">Unemployment</a>
+					<a href="workforce.html" class="myButton invert-blue">Workforce</a>
+					<a href="median_income.html" class="myButton invert-blue">Median Household Income</a>
+					<a href="gdp.html" class="myButton invert-blue">GDP</a>
+				</div>
+			</div>
+			<div align="right" class="column right">
+				<img src="logo-1.png" style="width:100px; height:100px;">
+			</div>
+		</div>
+		<hr style="height: 1px; border: 0 none; background-color: #aaa; color: #aaa; margin-left: 1%; margin-right: 1%;">
+		<div class="indexes_section">
+			<ul>
+				<li>
+					July '21 Unemployment
+					<a href="https://fred.stlouisfed.org/series/ROCK417URN" target="_blank" rel="noopener noreferrer"  class="myButton invert-blue"> </a>
+					<h2>8.7%</h2>from 9.4%
+					<p class="green">-0.7pp</p> 
+				</li>
+				<li>
+					2019 Per Capita Personal Income
+					<a href="https://fred.stlouisfed.org/series/ROCK417PCPI" target="_blank" rel="noopener noreferrer"  class="myButton invert-blue"> </a>
+					<h2>$44,783</h2>from $44,029
+					<p class="green">+1.7%</p>
+				</li>
+				<li>
+					2019 Real GDP
+					<a href="https://fred.stlouisfed.org/series/RGMP40420" target="_blank" rel="noopener noreferrer" class="myButton invert-blue"> </a>
+					<h2>$14.813B</h2>from $14.921B
+					<p class="red">-0.7%</p>
+				</li>
+				<li>
+					July '21 Labor Force
+					<a href="https://fred.stlouisfed.org/series/ROCK417LFN" target="_blank" rel="noopener noreferrer" class="myButton invert-blue"> </a>
+					<h2>158,769</h2>from 155,594
+					<p class="green">+2.0%</p>
+				</li>
+			</ul>
+		</div>
+		<div class="column left">
+			<div class="card">
+				<h1>Unemployment Rate</h1>
+				National Unemployment shown in green, peer regions shown in grey, peer average shown in dark grey, and Rockford shown in blue. This percentage is the number of people who have actively looked for a job without the past 4 weeks but haven't worked at least 1 hour divided by the number of people who have worked at least one hour plus those looking.
+				<div id="unemployment_chart"></div>
+			</div>
+		</div>
+		<div class="column right">
+			<div class="card special">
+				<h1 style="color:white;">Comparison to National Unemployment</h1>
+				How do Rockford and the Peer Regions fare against the Nation? The higher on the graph a point is, the more unemployment it has compared to the Nation. The blue area is Rockford and the grey line is its peers. 
+				<br>
+				<br>
+				<div id="simple_unemployment"></div>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	area_graph("unemployment_chart", "https://raw.githubusercontent.com/HoopsMcGee/datum-center/main/unemployment.csv");
+	unemployment_graph_simple("https://raw.githubusercontent.com/HoopsMcGee/datum-center/main/unemployment_simple.csv", "simple_unemployment")
+</script>
+</html>

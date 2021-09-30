@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset = "UTF-8">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+	<script src="https://d3js.org/d3.v4.js"></script>
+	<script src='https://cdn.plot.ly/plotly-2.4.1.min.js'></script>
+	<title>Rockford Economic Indicators Dashboard</title>
+	<script src="workforce.js"></script>
+	<script src="labor_force_bar.js"></script>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="column sidebar">
+		
+	</div>
+	<div class="column main_content">
+		<div class="title_section">
+			<div class="column left">
+				<h2>Rockford Economic Indicators Dashboard</h2>
+				How does Rockford, IL compare to its peers and also its past? This dashboard is home to multiple economic indicators that can give us a bird's eye view of our region.
+				<div style="position: absolute; bottom: 0">
+					Other economic indicators<br>
+					<a href="Andes.html" class="myButton invert-blue">Unemployment</a>
+					<a href="workforce.html" class="myButton invert-blue">Workforce</a>
+					<a href="median_income.html" class="myButton invert-blue">Median Household Income</a>
+					<a href="gdp.html" class="myButton invert-blue">GDP</a>
+				</div>
+			</div>
+			<div align="right" class="column right">
+				<img src="logo-1.png" style="width:100px; height:100px;">
+			</div>
+		</div>
+		<hr style="height: 1px; border: 0 none; background-color: #aaa; color: #aaa; margin-left: 1%; margin-right: 1%;">
+		<div class="indexes_section">
+			<ul>
+				<li>
+					July '21 Unemployment
+					<a href="https://fred.stlouisfed.org/series/ROCK417URN" target="_blank" rel="noopener noreferrer"  class="myButton invert-blue"> </a>
+					<h2>8.7%</h2>from 9.4%
+					<p class="green">-0.7pp</p> 
+				</li>
+				<li>
+					2019 Per Capita Personal Income
+					<a href="https://fred.stlouisfed.org/series/ROCK417PCPI" target="_blank" rel="noopener noreferrer"  class="myButton invert-blue"> </a>
+					<h2>$44,783</h2>from $44,029
+					<p class="green">+1.7%</p>
+				</li>
+				<li>
+					2019 Real GDP
+					<a href="https://fred.stlouisfed.org/series/RGMP40420" target="_blank" rel="noopener noreferrer" class="myButton invert-blue"> </a>
+					<h2>$14.813B</h2>from $14.921B
+					<p class="red">-0.7%</p>
+				</li>
+				<li>
+					July '21 Labor Force
+					<a href="https://fred.stlouisfed.org/series/ROCK417LFN" target="_blank" rel="noopener noreferrer" class="myButton invert-blue"> </a>
+					<h2>158,769</h2>from 155,594
+					<p class="green">+2.0%</p>
+				</li>
+			</ul>
+		</div>
+		<div class="column left">
+			<div class="card">
+				<h1>Workforce and Employment</h1>
+				The percentage of each city's population that are <div style="color:rgb(38,112,184);display:inline;">&#9632;</div> working, <div style="color:#222222;display:inline;">&#9632;</div> looking for work, or <div style="color:#123556;display:inline;">&#9632;</div> not looking for work. <br><br>
+				<div id="workforce_info"></div>
+			</div>
+		</div>
+		<div class="column right">
+			<div class="card special">
+				<h1 style="color:white;">Civilian Labor Force</h1>
+				The total number of people over the age of 16 who have worked at least 1 hour or have actively looked for a job within the past 4 weeks.
+				<br>
+				<div id="population"></div>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	workforce_graph("workforce_info", "https://raw.githubusercontent.com/HoopsMcGee/datum-center/main/employment_new_order.csv");
+	labor_force_bar("population","https://raw.githubusercontent.com/HoopsMcGee/datum-center/main/labor%20force.csv");
+</script>
+</html>
